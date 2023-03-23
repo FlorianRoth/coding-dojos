@@ -12,7 +12,5 @@ public class Tictactoe {
         Tictactoe tictactoe = new Tictactoe();
         tictactoe.board[coordinate] = player;
         return tictactoe;
-
-        
     }
 }
