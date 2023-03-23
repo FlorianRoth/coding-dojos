@@ -9,8 +9,8 @@ class TictactoeTest {
     @Test
     public void whenGameInitialized_GameBoardIsDefined() {
         var game = new Tictactoe();
-        
-        assertEquals(true, game.isBoardEmpty());
+
+        assertTrue(game.isBoardEmpty());
     }
 
     @Test
@@ -18,7 +18,7 @@ class TictactoeTest {
         var game = new Tictactoe();
         var playerX = 'X';
         var coord = 5;
-        game.playerMakesTurn(playerX, coord);
-        assertEquals(true, game.isBoardEmpty());
+        Tictactoe newTurn = game.playerMakesTurn(playerX, coord);
+        assertFalse(newTurn.isBoardEmpty());
     }
 }
