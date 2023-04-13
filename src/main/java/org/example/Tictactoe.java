@@ -1,11 +1,15 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Tictactoe {
 
-    private char[] board = new char[9];
+    private Character[] board = new Character[9];
 
     public boolean isBoardEmpty() {
-        return true;
+        var boardStream = Arrays.stream(board);
+        return boardStream.allMatch(Objects::isNull);
     }
 
     public Tictactoe playerMakesTurn(char player, int coordinate) {
