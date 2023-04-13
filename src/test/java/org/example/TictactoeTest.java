@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.example.Tictactoe.Player;
+
 class TictactoeTest {
 
     @Test
@@ -16,9 +18,20 @@ class TictactoeTest {
     @Test
     public void whenPlayerXMakesFirstTurn_BoardIsNotEmptyAnymore() {
         var game = new Tictactoe();
-        var playerX = 'X';
+        var playerX = Player.X;
         var coord = 5;
         Tictactoe newTurn = game.playerMakesTurn(playerX, coord);
         assertFalse(newTurn.isBoardEmpty());
+    }
+
+    @Test
+    public void whenPlayerTriesToOverride()
+    {
+        var game = new Tictactoe();
+        var playerX = Player.X;
+        var coord = 5;
+        Tictactoe newTurn = game.playerMakesTurn(playerX, coord);
+        
+        assertThrows(IllegalArgumentException.class, ()-> newTurn.playerMakesTurn(playerX, coord));
     }
 }
