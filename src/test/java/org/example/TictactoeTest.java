@@ -34,4 +34,14 @@ class TictactoeTest {
         
         assertThrows(IllegalArgumentException.class, ()-> newTurn.playerMakesTurn(playerX, coord));
     }
+
+    @Test
+    public void playerCannotMakeTwocConsecutiveMoves()
+    {
+        var game = new Tictactoe().playerMakesTurn(Player.X, 0);
+        
+        assertThrows(IllegalArgumentException.class, ()->game.playerMakesTurn(Player.X, 1));
+        
+    }
+
 }
