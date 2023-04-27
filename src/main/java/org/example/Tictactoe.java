@@ -5,12 +5,22 @@ import java.util.Objects;
 
 public class Tictactoe {
 
-    private Player[] board = new Player[9];
+    private final Player[] board;
 
-    private Player lastActor;
+    private final Player lastActor;
 
     public enum Player{
         X,O
+    }
+
+    public Tictactoe() {
+        this.board = new Player[9];
+        this.lastActor = null;
+    }
+
+    private Tictactoe(Player[] board, Player lastActor) {
+        this.board = Arrays.copyOf(board, board.length);
+        this.lastActor = lastActor;
     }
 
     public boolean isBoardEmpty() {
@@ -28,11 +38,15 @@ public class Tictactoe {
             throw new IllegalArgumentException("Dieser Spieler ist nicht an der Reihe!");
         }
 
-        Tictactoe tictactoe = new Tictactoe();
+        Tictactoe tictactoe = new Tictactoe(board, player);
         tictactoe.board[coordinate] = player;
-                
-        tictactoe.lastActor = player;
 
         return tictactoe;
     }
+
+    public Player retrieveMarkFromCoordinate(int coordinate) {
+        return board[coordinate];
+    }
+
+
 }
