@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Tictactoe {
 
-    private final Player[] board;
+    private final Board board;
 
     private final Player lastActor;
 
@@ -14,7 +14,7 @@ public class Tictactoe {
     }
 
     public Tictactoe() {
-        this.board = new Player[9];
+        this.board = new Board();
         this.lastActor = null;
     }
 
@@ -48,5 +48,8 @@ public class Tictactoe {
         return board[coordinate];
     }
 
+    public Player getWinner(){
+
+    }
 
 }
