@@ -32,7 +32,9 @@ class TictactoeTest {
         var coord = 5;
         Tictactoe newTurn = game.playerMakesTurn(playerX, coord);
         
-        assertThrows(IllegalArgumentException.class, ()-> newTurn.playerMakesTurn(playerX, coord));
+        var exception = assertThrows(IllegalArgumentException.class, ()-> newTurn.playerMakesTurn(playerX, coord));
+        assertEquals("Dieses Feld ist schon besetzt!", exception.getMessage(), "Das war die falsche Fehlermeldung");
+        
     }
 
     @Test
@@ -40,8 +42,8 @@ class TictactoeTest {
     {
         var game = new Tictactoe().playerMakesTurn(Player.X, 0);
         
-        assertThrows(IllegalArgumentException.class, ()->game.playerMakesTurn(Player.X, 1));
-        
+        var exception = assertThrows(IllegalArgumentException.class, ()->game.playerMakesTurn(Player.X, 1));
+        assertEquals("Dieser Spieler ist nicht an der Reihe!", exception.getMessage(), "Das war die falsche Fehlermeldung");
     }
 
 }
