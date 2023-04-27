@@ -46,4 +46,28 @@ class TictactoeTest {
         assertEquals("Dieser Spieler ist nicht an der Reihe!", exception.getMessage(), "Das war die falsche Fehlermeldung");
     }
 
+    @Test 
+    public void twoPlayersCanMakeAMove() {
+        var game = new Tictactoe()
+        .playerMakesTurn(Player.X, 0)
+        .playerMakesTurn(Player.O, 1);
+
+        assertEquals(Player.X, game.retrieveMarkFromCoordinate(0));
+        assertEquals(Player.O, game.retrieveMarkFromCoordinate(1));
+    }
+
+    @Test 
+    public void playerXFillsFirstRowWhilePlayerODoesntPayAttention() {
+        
+        var game = new Tictactoe()
+        .playerMakesTurn(Player.X, 0)
+        .playerMakesTurn(Player.O, 4)
+        .playerMakesTurn(Player.X, 1)
+        .playerMakesTurn(Player.O, 5)
+        .playerMakesTurn(Player.X, 2)
+        ;
+
+        assertEquals(Player.X, game.getWinner());
+    }
+
 }
