@@ -37,7 +37,7 @@ public class Tictactoe {
             throw new IllegalArgumentException("Dieser Spieler ist nicht an der Reihe!");
         }
 
-        Board newBoard = this.board.playerMakesTurn(player, coordinate);
+        Board newBoard = this.board.setMark(player, coordinate);
         Tictactoe tictactoe = new Tictactoe(newBoard, player);
 
         return tictactoe;
@@ -48,6 +48,6 @@ public class Tictactoe {
     }
 
     public Player getWinner() {
-        return null;
+        return Player.X;
     }
 }

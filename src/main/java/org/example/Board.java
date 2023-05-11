@@ -24,7 +24,7 @@ public class Board {
         return board[coordinate] != null;
     }
 
-    public Board playerMakesTurn(Tictactoe.Player player, int coordinate) {
+    public Board setMark(Tictactoe.Player player, int coordinate) {
         var newBoard = new Board(this);
         newBoard.board[coordinate] = player;
         return newBoard;
