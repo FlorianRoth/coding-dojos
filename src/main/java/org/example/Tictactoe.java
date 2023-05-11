@@ -18,19 +18,18 @@ public class Tictactoe {
         this.lastActor = null;
     }
 
-    private Tictactoe(Player[] board, Player lastActor) {
-        this.board = Arrays.copyOf(board, board.length);
+    private Tictactoe(Board board, Player lastActor) {
+        this.board = board;
         this.lastActor = lastActor;
     }
 
     public boolean isBoardEmpty() {
-        var boardStream = Arrays.stream(board);
-        return boardStream.allMatch(Objects::isNull);
+        return board.isBoardEmpty();
     }
 
     public Tictactoe playerMakesTurn(Player player, int coordinate) {
 
-        if(board[coordinate] != null){
+        if(board.isOccupied(coordinate)){
             throw new IllegalArgumentException("Dieses Feld ist schon besetzt!");
         }
 
