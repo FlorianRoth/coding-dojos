@@ -29,26 +29,25 @@ public class Tictactoe {
 
     public Tictactoe playerMakesTurn(Player player, int coordinate) {
 
-        if(board.isOccupied(coordinate)){
+        if (board.isOccupied(coordinate)){
             throw new IllegalArgumentException("Dieses Feld ist schon besetzt!");
         }
 
-        if(this.lastActor == player){
+        if (this.lastActor == player){
             throw new IllegalArgumentException("Dieser Spieler ist nicht an der Reihe!");
         }
 
-        Tictactoe tictactoe = new Tictactoe(board, player);
-        tictactoe.board[coordinate] = player;
+        Board newBoard = this.board.playerMakesTurn(player, coordinate);
+        Tictactoe tictactoe = new Tictactoe(newBoard, player);
 
         return tictactoe;
     }
 
     public Player retrieveMarkFromCoordinate(int coordinate) {
-        return board[coordinate];
+        return board.retrieveMarkFromCoordinate(coordinate);
     }
 
-    public Player getWinner(){
-
+    public Player getWinner() {
+        return null;
     }
-
 }
